@@ -1,0 +1,46 @@
+clauses
+  buy_car(Model,Color):-
+	car(Model,Color,Price),
+	colors(Color,sexy),!,
+	Price > 25000.
+
+  car(maserati,green,25000).
+  car(corvette,black,24000).
+  car(corvette,red,26000).
+  car(porsche,red,24000).
+
+  colors(red,sexy).
+  colors(black,mean).
+  colors(green,preppy).
+
+goal
+  buy_car(corvette,Y).
+
+=======================================================================================================================================================================
+
+- Pada program mencari warna dari sebuah mobil dengan inputan yaitu model mobil corvette yang ingin diketahui warnanya
+- Syaratnya yaitu mobil harus memiliki model, warna dan harga. Warna mobil harus tergolong dalam kategori sexy, dimana kategori sexy yaitu warna red 
+  dan aturan harga > 25000 tidak perlu dijalankan karena terdapat fungsi not disana. Jadi pelacakan hanya sampai pada rules kedua yaitu warna dengan kategori sexy
+- Pada tahap ini program akan membaca lebih awal : 
+							- car(maserati,green,25000).
+
+							ini memenuhi rules awal yaitu memiliki model, warna dan harga tetapi warna yang diminta harus dalam
+							kategori sexy, sedangkan green bukan termaksud warna kategori sexy. (lacak balik)
+							
+							- car(corvette,black,24000).
+							
+							ini pun memenuhi rules awal yaitu memiliki model, warna dan harga tetapi warna yang diminta harus dalam
+							kategori sexy, sedangkan black juga bukan termaksud warna kategori sexy. (lacak balik)
+
+							- car(corvette,red,26000).
+							
+							ini memenuhi rules awal yaitu memiliki model, warna dan harga yaitu model corvette, red dan 26000
+							rules kedua yaitu warna, red memenuhi kategori sexy yang dicari.
+							rules ketiga tidak dijalankan karena terdapat fungsi not yang berarti berhenti sampai pada rules kedua saja
+							yang harus terpenuhi hanyalah rules awal dan rules kedua. (berhenti)
+							
+- Saat semua rules terpenuhi maka program akan berhenti melacak dan ditemukanlah goal dari program yaitu buy_car (corvette, Y) = red
+							
+
+
+
